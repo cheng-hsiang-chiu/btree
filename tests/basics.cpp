@@ -4,12 +4,12 @@
 #include "../src/btree_tester.hpp"
 
 
-btree::BNode* root = new btree::BNode();
 
 TEST_CASE("get_insertion_position" * doctest::timeout(300)) {
   
   btree::BTreeTester tester(4);
   
+  btree::BNode* root = new btree::BNode();
   root->keys.push_back(6);
   root->keys.push_back(8);
 
@@ -26,6 +26,7 @@ TEST_CASE("split_node" * doctest::timeout(300)) {
   
   btree::BTreeTester tester(4);
   
+  btree::BNode* root = new btree::BNode();
   root->keys.push_back(6);
   root->keys.push_back(8);
   root->keys.push_back(16);
@@ -38,14 +39,19 @@ TEST_CASE("split_node" * doctest::timeout(300)) {
 
 TEST_CASE("insert" * doctest::timeout(300)) {
 
-  btree::BTreeTester* tester = new btree::BTreeTester(4);
+  //btree::BTreeTester* tester = new btree::BTreeTester(4);
+
+  btree::BTreeTester tester(4);
 
   for (size_t i = 0; i < 13; ++i) 
-    tester->insert(i);
+    tester.insert(i);
   
-  btree::BNode* root_tester = tester->get_root();  
-    
-  REQUIRE(root_tester->keys[0] == 2);
+  //btree::BNode* root_tester = tester->_bt_tester->get_root();  
+  
+  //std::cout << tester << '\n';
+  //std::cout << tester->get_root() << '\n';
+  //std::cout << tester->get_root()->keys.empty() << '\n';    
+  REQUIRE(tester.bt_tester->get_root()->keys[0] == 2);
   /*
   REQUIRE(root_tester->keys[1] == 5);
   REQUIRE(root_tester->keys[2] == 8);

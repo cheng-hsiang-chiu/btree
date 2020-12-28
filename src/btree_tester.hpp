@@ -17,31 +17,37 @@ namespace btree {
       void insert_helper(BNode*& node, const int k);
       BNode* split_node(BNode*& node);
       BNode* get_root() const;
-       
-      BTree* _bt_tester;
+      int order;       
+
+      BTree* bt_tester;
   };
 
 
   // constructor
-  BTreeTester::BTreeTester(const size_t m) {
-    BTree* _bt_tester = new BTree(m);
-  };
+  BTreeTester::BTreeTester(const size_t m) : order(m) {
+    std::cout << "construct a btree tester\n";
+    bt_tester = new BTree(m);
+  }
 
 
   BNode* BTreeTester::get_root() const {
-    return _bt_tester->get_root();
+    //BTree* _bt_tester = new BTree(order);
+    std::cout << "get_root from BtreeTester\n";
+    return bt_tester->get_root();
   }
 
 
   // get where to insert the new key
   size_t BTreeTester::get_insertion_position(const BNode* node, const int k) const {
-    return _bt_tester->_get_insertion_position(node, k);
+    //BTree* _bt_tester = new BTree(order);
+    return bt_tester->_get_insertion_position(node, k);
   }
   
 
   // insert key into the tree
   void BTreeTester::insert(const int k) {
-    _bt_tester->insert(k);
+    //BTree* _bt_tester = new BTree(order);
+    bt_tester->insert(k);
   }
 
 
@@ -102,31 +108,35 @@ namespace btree {
 
   // return the key that will be promoted to the parent node
   BNode* BTreeTester::split_node(BNode*& node) {
-    return _bt_tester->_split_node(node);
+    //BTree* _bt_tester = new BTree(order);
+    return bt_tester->_split_node(node);
   }  
 
 
   // traverse the whole tree
   void  BTreeTester::traverse() const {
-    _bt_tester->traverse();
+    //BTree* _bt_tester = new BTree(order);
+    bt_tester->traverse();
   }
 
 
   // the auxiliary function of traverse 
   void BTreeTester::traverse_helper(const BNode* node) const {
-    _bt_tester->_traverse_helper(node);
+    //BTree* _bt_tester = new BTree(order);
+    bt_tester->_traverse_helper(node);
   }
 
 
   // search the location of the target key
   void BTreeTester::search(const int k) const {
-    _bt_tester->search(k);
+    //BTree* _bt_tester = new BTree(order);
+    bt_tester->search(k);
   }
 
 
   // the auxiliary function of search
   void BTreeTester::search_helper(const BNode* node, const int k) const {
-    _bt_tester->_search_helper(node, k);
-
+    //BTree* _bt_tester = new BTree(order);
+    bt_tester->_search_helper(node, k);
   }
 }

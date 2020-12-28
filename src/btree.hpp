@@ -6,7 +6,8 @@ namespace btree {
   
   struct BNode {
     std::vector<int> keys;
-    std::vector<BNode*> children;  
+    std::vector<BNode*> children;  // not necessary
+    
     bool has_children = false;
   };
 
@@ -38,6 +39,7 @@ namespace btree {
 
   // constructor
   BTree::BTree(const size_t m) : _order(m) {
+    std::cout << "creating a root node\n";
     _root = new BNode(); 
     //_root->has_children = false;
   };
@@ -156,12 +158,14 @@ namespace btree {
         node->children.pop_back();
     }
 
+    /*
     for (size_t i = 0; i < node->keys.size(); ++i)
       std::cout << node->keys[i] << '\n';
     if (node->has_children) {
       for (size_t i = 0; i < node->children.size(); ++i)
         std::cout << node->children[i]->keys[0] << '\n';
     }
+    */
 
     return new_node;  
   }  
